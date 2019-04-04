@@ -13,16 +13,16 @@ def ConvertDirectory(pathToDir, arrayName = "Collection"):
         for item in os.listdir(pathToDir):
             itemPath = os.path.join(pathToDir, item)
             if os.path.isfile(itemPath):
-                content = _ConvertFile(itemPath)
+                content = ConvertFile(itemPath)
                 if len(content) > 0:
                     name = _ResolveFileName(itemPath)
                     collection[name] = content
 
     return collection
 
-def _ConvertFile(pathToFile): #return a Dict of all Groups (created with the addElement function)
+def ConvertFile(pathToFile):
     if os.path.isfile(pathToFile):
-        extension = _ResolveFileType(pathToFile)
+        extension = _ResolveFileType(pathToFile).lower()
         if extension in ExtensionParser:
             return ExtensionParser[extension].parse(pathToFile, _addElement)
     return {}
