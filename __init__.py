@@ -24,15 +24,8 @@ def ConvertFile(pathToFile):
     if os.path.isfile(pathToFile):
         extension = _ResolveFileType(pathToFile).lower()
         if extension in ExtensionParser:
-            return ExtensionParser[extension].parse(pathToFile, _addElement)
+            return ExtensionParser[extension].parse(pathToFile)
     return {}
-
-def _addElement(arrayToAdd, title, group = "unknown"):
-    if not group in arrayToAdd:
-        arrayToAdd[group] = []
-    arrayToAdd[group].append({
-        "title": title
-    })
 
 def _ResolveFileType(pathToFile):
     filename, extension = os.path.splitext(pathToFile)
