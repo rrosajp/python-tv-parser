@@ -1,9 +1,9 @@
 # python-tv-parser **(PTP)**
-PTP is an library for Playlist Parsing in Python
+PTP is an lightweight Python library for parsing common Playlist File Types
 
 ## Available FileTypes
-- [ ] .M3U (in progress)
-- [ ] .M3U8 (in progress)
+- [X] .M3U (ready for test)
+- [X] .M3U8 (ready for test)
 
 ## Parsing
 
@@ -12,7 +12,7 @@ Parsing a single file or a whole directory
 ### File
 **ConvertFile function**:
 returns an Dict Object with all TvElements in his group<br />
-ex:
+example output:
 ```
 {
   "myGroup1": [
@@ -33,7 +33,7 @@ ex:
 **ConvertDirectory function**:
 returns an Dict Object which contains other Dicts which represent the files,<br />
 these Dicts contains the content of a singleFile <br />
-ex:
+example output:
 ```
 {
   "MyFile1": {
