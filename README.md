@@ -15,12 +15,16 @@ returns an Dict Object with all TvElements in his group<br />
 ex:
 ```
 {
-  "myGroup1": {
-    "title": "MyCoolVideo"
-  },
-  "myGroup2": {
-    "title": "MyCoolMusic"
-  }
+  "myGroup1": [
+    {
+      "title": "MyCoolVideo"
+    }
+  ],
+  "myGroup2": [
+    {
+      "title": "MyCoolMusic"
+    }
+  ]
   ...
 }
 ```
