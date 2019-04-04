@@ -3,7 +3,7 @@
 #
 ParserCollection = {}
 
-# M3U, M3U8
+# M3U
 import m3u
 M3UParser = m3u.M3UParser(defineExtensions)
 
