@@ -2,14 +2,23 @@
 # -*- coding: utf-8 -*-
 #
 
+import os
+
 class M3UParser(Parser):
 
     def __init__(self, extensionDefiner):
         extensionDefiner(self, [".m3u8", ".m3u"])
 
 
-    def parse(self, pathToFile):
-        fileContent = open(pathToFile, "r")
+    def parse(self, pathToFile, content = None):
+        if content:
+            fileContent = content
+        else:
+            if os.path.isfile(pathToFile):
+                fileContent = open(pathToFile, "r")
+            else:
+                return {}
+                
         lines = fileContent.split('\n')
         if "#EXTM3U" in lines[0]:
             return self.parse_ext(lines)

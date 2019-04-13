@@ -20,6 +20,13 @@ def ConvertDirectory(pathToDir, arrayName = "Collection"):
 
     return collection
 
+def ConvertContent(content, extension):
+    if not "." in extension:
+        extension = "." + extension
+    if extension in ExtensionParser:
+        return ExtensionParser[extension].parse(None, content)
+    return {}
+
 def ConvertFile(pathToFile):
     if os.path.isfile(pathToFile):
         extension = _ResolveFileType(pathToFile).lower()
