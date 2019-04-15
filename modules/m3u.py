@@ -4,7 +4,7 @@
 
 import os
 
-class M3UParser(Parser):
+class M3UParser():
 
     def __init__(self, extensionDefiner):
         extensionDefiner(self, [".m3u8", ".m3u"])
@@ -18,7 +18,7 @@ class M3UParser(Parser):
                 fileContent = open(pathToFile, "r")
             else:
                 return {}
-                
+
         lines = fileContent.split('\n')
         if "#EXTM3U" in lines[0]:
             return self.parse_ext(lines)
@@ -75,7 +75,7 @@ class M3UParser(Parser):
         return m3u8Content
 
     def EXTM3U_AppendObject(self, m3u8Object, m3u8Content):
-        group = (m3u8Object['group'] . "")
+        group = (m3u8Object['group'] + "")
         if not group in m3u8Content:
             m3u8Content[group] = []
 
