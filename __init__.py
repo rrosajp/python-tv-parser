@@ -7,13 +7,13 @@ import modules as ParserModules
 
 ExtensionParser = ParserModules.ParserCollection
 
-def ConvertDirectory(pathToDir, arrayName = "Collection"):
+def ConvertDirectory(pathToDir, badCharacter = ""):
     collection = {}
     if os.path.isdir(pathToDir):
         for item in os.listdir(pathToDir):
             itemPath = os.path.join(pathToDir, item)
             if os.path.isfile(itemPath):
-                content = ConvertFile(itemPath)
+                content = ConvertFile(itemPath, badCharacter)
                 if len(content) > 0:
                     name = _ResolveFileName(itemPath)
                     collection[name] = content
