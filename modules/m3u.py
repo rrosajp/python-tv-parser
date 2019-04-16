@@ -6,12 +6,18 @@ import re
 
 class M3UParser():
 
+    bad_chars = None
+
     def __init__(self, extensionDefiner):
         extensionDefiner(self, [".m3u8", ".m3u"])
 
-    def parse(self, pathToFile):
-        fileOpen = open(pathToFile, "r")
-        fileContent = fileOpen.read()
+    def parse(self, pathToFile, content = None, badCharacter = ""):
+        self.bad_chars = badCharacter
+        if content:
+            fileContent = content
+        else:
+            fileOpen = open(pathToFile, "r")
+            fileContent = fileOpen.read()
         lines = fileContent.split('\n')
         if "#EXTM3U" in lines[0]:
             return self.parse_ext(lines)
@@ -117,6 +123,12 @@ class M3UParser():
         for match in pattern.finditer(line):
             dict[match.group(1)] = match.group(2)
 
-        m3u8Object["group"] = self.EXTM3U_GetGroup(dict)
-        m3u8Object["title"] = self.EXTM3U_GetTitle(dict, line)
+        title = self.EXTM3U_GetTitle(dict, line)
+        for char in self.bad_chars: title = title.replace(char, " ")
+
+        group = self.EXTM3U_GetGroup(dict)
+        for char in self.bad_chars: group = group.replace(char, " ")
+
+        m3u8Object["group"] = group
+        m3u8Object["title"] = title
         m3u8Object["logo"] = self.EXTM3U_GetLogo(dict)
