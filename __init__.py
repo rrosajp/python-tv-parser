@@ -21,6 +21,7 @@ def ConvertDirectory(pathToDir, badCharacter = ""):
     return collection
 
 def ConvertContent(content, extension, badCharacter = ""):
+    extension = extension.lower()
     if not "." in extension:
         extension = "." + extension
     if extension in ExtensionParser:
@@ -29,14 +30,14 @@ def ConvertContent(content, extension, badCharacter = ""):
 
 def ConvertFile(pathToFile, badCharacter = ""):
     if os.path.isfile(pathToFile):
-        extension = _ResolveFileType(pathToFile).lower()
+        extension = _ResolveFileType(pathToFile)
         if extension in ExtensionParser:
             return ExtensionParser[extension].parse(pathToFile, None, badCharacter)
     return {}
 
 def _ResolveFileType(pathToFile):
     filename, extension = os.path.splitext(pathToFile)
-    return extension
+    return extension.lower()
 
 def _ResolveFileName(pathToFile):
     filename, extension = os.path.splitext(pathToFile)
