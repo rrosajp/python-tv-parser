@@ -21,6 +21,18 @@ Versions under 2.7 are untested
 ## Additional Features
 - [ ] EPG Parsing (soon)
 
+## Public Functions
+
+Function | Description | Args
+:--- | :--- | :---
+`ConvertDirectory` | Convert/Parse all files in an Directory  | pathToDir, badCharacter
+`ConvertFile` | Convert/Parse a single file | pathToFile, badCharacter
+`ConvertContent` | Convert/Parse the given string (content) | content, extension, badCharacter
+`_ResolveFileType` | Get file extension | pathToFile
+`_ResolveFileName` | Get file name | pathToFile
+
+badCharacter is optional (These Characters wil be removed from the Group and Item Title)
+
 ## Parsing
 Parsing a single file or a whole directory
 
