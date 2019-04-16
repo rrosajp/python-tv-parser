@@ -30,16 +30,18 @@ returns an Dict Object with all TvElements in his group<br />
 example output:
 ```
 {
-  "myGroup1": [
-    {
-      "title": "MyCoolVideo"
+  "myGroup1": {
+    "MyCoolVideo": {
+      "Url": "http..."
     }
-  ],
-  "myGroup2": [
-    {
-      "title": "MyCoolMusic"
+    ...
+  },
+  "myGroup2": {
+    "MyCoolMusic": {
+      "Url": "http..."
     }
-  ]
+    ...
+  }
   ...
 }
 ```
@@ -52,29 +54,33 @@ example output:
 ```
 {
   "MyFile1": {
-    "myGroup1": [
-      {
-        "title": "MyCoolVideo"
+    "myGroup1": {
+      "MyCoolVideo": {
+        "Url": "http..."
       }
-    ],
-    "myGroup2": [
-      {
-        "title": "MyCoolMusic"
+      ...
+    },
+    "myGroup2": {
+      "MyCoolMusic": {
+        "Url": "http..."
       }
-    ]
+      ...
+    }
     ...
   },
   "MyFile2": {
-    "awesomeGroup1": [
-      {
-        "title": "MyCoolStream"
+    "awesomeGroup1": {
+      "MyCoolStream": {
+        "Url": "http..."
       }
-    ],
-    "awesomeGroup2": [
-      {
-        "title": "MyFunnyVideo"
+      ...
+    },
+    "awesomeGroup2": {
+      "MyFunnyVideo": {
+        "Url": "http..."
       }
-    ]
+      ...
+    }
     ...
   }
 }
