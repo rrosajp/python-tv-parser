@@ -53,14 +53,17 @@ class M3UParser():
 
         m3u8Object = None
         for line in lines:
+            lineTag = line.split(':')[0]
             if m3u8Object is None:
-                if 'EXTINF' in line.split(':')[0]:
+                if 'EXTINF' in lineTag:
                     m3u8Object = {}
                     self.EXTM3U_ParseLine(m3u8Object, line)
                 else:
                     continue
             else:
-                if 'EXTINF' in line.split(':')[0]:
+                if 'EXTVLCOPT' in lineTag:
+                    continue
+                if 'EXTINF' in lineTag:
                     m3u8Object['url'] = ""
                     self.EXTM3U_AppendObject(m3u8Object, m3u8Content)
                     m3u8Object = {}
@@ -69,8 +72,6 @@ class M3UParser():
                 else:
                     line = line.strip()
                     if line:
-                        if '#EXTVLCOPT' in line:
-                            continue
                         m3u8Object['url'] = line
                     else:
                         continue
