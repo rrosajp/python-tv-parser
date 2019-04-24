@@ -69,6 +69,8 @@ class M3UParser():
                 else:
                     line = line.strip()
                     if line:
+                        if '#EXTVLCOPT' in line:
+                            continue
                         m3u8Object['url'] = line
                     else:
                         continue
