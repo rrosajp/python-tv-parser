@@ -63,6 +63,8 @@ class M3UParser():
             else:
                 if 'EXTVLCOPT' in lineTag:
                     continue
+                if 'EXT-X' in line:
+                    continue
                 if 'EXTINF' in lineTag:
                     m3u8Object['url'] = ""
                     self.EXTM3U_AppendObject(m3u8Object, m3u8Content)
