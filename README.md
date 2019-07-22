@@ -1,8 +1,8 @@
 # python-tv-parser **(PTP)**
 PTP is an lightweight Python library for parsing common Playlist File Types
 
-![Last Commit](https://img.shields.io/github/last-commit/PulseMedia/python-tv-parser.svg?style=popout-square)
 ![Python Version](https://img.shields.io/badge/Python-2.7%2B-blue.svg?style=popout-square)
+![Last Commit](https://img.shields.io/github/last-commit/PulseMedia/python-tv-parser.svg?style=popout-square)
 
 ## Lightweight Parsing
 The goal of this project is to make it lightweight as possible and take the best performance out of it. <br />
@@ -41,7 +41,39 @@ Parsing a single file or a whole directory
 
 ### File
 **ConvertFile function**:
-returns an Dict Object with all TvElements in his group<br />
+Convert a file (path to file - string)
+returns an Dict Object with all Elements<br />
+usage:
+```
+parsedFile = ConvertFile("C://..<PathToMyFile>")
+```
+example output:
+```
+{
+  "myGroup1": {
+    "MyCoolVideo": {
+      "Url": "http..."
+    }
+    ...
+  },
+  "myGroup2": {
+    "MyCoolMusic": {
+      "Url": "http..."
+    }
+    ...
+  }
+  ...
+}
+```
+
+### File
+**ConvertContent function**:
+Converts content (string)
+returns an Dict Object with all TvElements<br />
+usage:
+```
+parsedContent = ConvertContent("#EXTM3U ...", "m3u")
+```
 example output:
 ```
 {
@@ -63,8 +95,13 @@ example output:
 
 ### Directory
 **ConvertDirectory function**:
+Convert a Directory (path to directory - string)
 returns an Dict Object which contains other Dicts which represent the files,<br />
 these Dicts contains the content of a singleFile<br />
+usage:
+```
+parsedDirectory = ConvertDirectory("C://..<PathToMyDirectory>")
+```
 example output:
 ```
 {
@@ -100,3 +137,5 @@ example output:
   }
 }
 ```
+
+Note: Each function has an badCharacter Parameter, here you can add Characters (as a string) which will be removed from Group/Entry Names
