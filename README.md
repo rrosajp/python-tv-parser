@@ -66,7 +66,7 @@ example output:
 }
 ```
 
-### File
+### File Content
 **ConvertContent function**:
 Converts content (string)
 returns an Dict Object with all TvElements<br />
