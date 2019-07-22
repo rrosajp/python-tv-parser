@@ -1,6 +1,9 @@
 # python-tv-parser **(PTP)**
 PTP is an lightweight Python library for parsing common Playlist File Types
 
+![Last Commit](https://img.shields.io/github/last-commit/PulseMedia/python-tv-parser.svg?style=popout-square)
+![Python Version](https://img.shields.io/badge/Python-2.7%2B-blue.svg?style=popout-square)
+
 ## Lightweight Parsing
 The goal of this project is to make it lightweight as possible and take the best performance out of it. <br />
 That's why we only want to parse the following information from the files: <br />
